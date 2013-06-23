@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Splitter</string>
+    <string name="hello_world">Splitter App || Splits your Bills</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Splitter</string>
+    <string name="title_activity_second">Second</string>
+    <string name="title_activity_third">Third</string>
+
+</resources>
