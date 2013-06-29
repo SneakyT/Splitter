@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,13 +16,16 @@ import android.widget.Toast;
  * in the mobile devices application list.
  * 
  * @author carl & mikey
+ * @version 1.1
  *
  */
 public class MainActivity extends Activity {
 
 	// Class variables
 	
-	String input; // A variable to hold the total bill amount.
+	String strValueOfBill; // A variable to hold the total bill amount.
+	boolean blRouletteTip; // a variable holding the decision on whether roulette tip functionality should be used.
+	boolean blIncludeTip; // a variable holding the decision on whether include tip functionality should be used.
 	
 	/**
 	 * Overriding default android method from Activity, this is called at the start of this activity and as
@@ -29,7 +33,8 @@ public class MainActivity extends Activity {
 	 */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        // Always call super to restore previous state of this activity if resuming. (It's an android thing)
+    	super.onCreate(savedInstanceState);
         
         /* assign the layout "activity_main" to this activity. details for how things should be displayed initially
            will  be found in this xml found in res/layout/ */
@@ -38,32 +43,82 @@ public class MainActivity extends Activity {
     }
     
     /**
-     * I think this refers to Androids little "three dot" settings/options menu in the at the top of most apps.
-     * We need to work out what this does.
+     * This refers to Androids little "three dot" settings/options menu in the at the top of most apps.
+     * @param menu
      */
-    @Override
+    //@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu); // TODO work out what this line does exactly.
         return true;
     }
     
     /**
+     * Messy function which listens for Checkbox click events. If one is selected it un-selects the other
+     * and assigns appropriate values to boolean class variables which store the tip settings.
+     * @param view
+     */
+    public void onCheckboxClicked(View view) {
+    	// TODO: Make this function neater
+    	
+    	// Is the view that threw the event now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+        
+        // Switching on the view's id to identify which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.includeTipCheck:
+            	// If include tip in total bill checkbox has just been checked.
+            	if (checked)
+                {
+            		CheckBox checkBox = (CheckBox)findViewById(R.id.rouletteTipCheck);
+            		checkBox.setChecked(false);
+            		blIncludeTip = true;
+            		blRouletteTip = false;
+            		System.out.println("Current state of checkboxes... \n Include Tip: " + blIncludeTip +" Roulette Tip: " + blRouletteTip);
+                }
+            	// If include tip in total bill checkbox has just been UNchecked.
+                else
+                {
+                	blIncludeTip = false;
+                	System.out.println("Current state of checkboxes... \n Include Tip: " + blIncludeTip +" Roulette Tip: " + blRouletteTip);
+                }
+                break;
+            case R.id.rouletteTipCheck:
+            	// If assign tip in a roulette style checkbox has just been checked.
+            	if (checked)
+            	{
+            		CheckBox checkBox = (CheckBox)findViewById(R.id.includeTipCheck);
+            		checkBox.setChecked(false);
+            		blIncludeTip = false;
+            		blRouletteTip = true;
+            		System.out.println("Current state of checkboxes... \n Include Tip: " + blIncludeTip +" Roulette Tip: " + blRouletteTip);
+            	}
+            	// If assign tip in a roulette style checkbox has just been UNchecked.
+                else
+                {
+                	blRouletteTip = false;
+                	System.out.println("Current state of checkboxes... \n Include Tip: " + blIncludeTip +" Roulette Tip: " + blRouletteTip);
+                }
+                break;
+        }
+    }
+    
+    /**
      * Called when the user touches the button.
+     * @param view
      */
     public void sendMessage(View view) {
         // Do something in response to button click
-    	
     	System.out.println("Yo Mumma");
     	
     	// Grabs the EditText from our layout by using it's id totalBillS1
     	EditText editText = (EditText) findViewById(R.id.totalBillS1);
     	// Converts it from an EditText View object to just the string value it contains.
-    	input = editText.getText().toString();
+    	strValueOfBill = editText.getText().toString();
     	
-    	System.out.println(input +" this");
+    	
     	
     	// if the user enters nothing or the variable is somehow not assigned to anything or when the value entered is equal to 0.0
-    	if ("".equals(input)||input==null||Double.parseDouble(input)==0.0)
+    	if ("".equals(strValueOfBill)||strValueOfBill==null||Double.parseDouble(strValueOfBill)==0.0)
     	{
     		// Grabs the current state of our application.
     		Context context = getApplicationContext();
@@ -80,7 +135,7 @@ public class MainActivity extends Activity {
     		toast.show();
     	}
     	// if the use enters a ridiculously low amount (less than a pound)
-    	else if (Double.parseDouble(input)<1.0)
+    	else if (Double.parseDouble(strValueOfBill)<1.0)
     	{
     		// Creates and displays a toast as above
     		Context context = getApplicationContext();
@@ -97,8 +152,11 @@ public class MainActivity extends Activity {
     		   This class and the class "Second" are passed in as parameters */
 	    	Intent intent = new Intent(this, Second.class);
 	    	
-	    	// An extra value is included with the intent we just created, the string that we captured from our edit text earlier. 
-	        intent.putExtra("pass",input);
+	    	/* Extra values are included with the intent we just created, the string that we captured from our edit text earlier
+	    	   as well as the current states of the tip checkboxes*/
+	        intent.putExtra("pass",strValueOfBill); // TODO make name of this 
+	        intent.putExtra("blRouletteTip", blRouletteTip);
+	        intent.putExtra("blIncludeTip", blIncludeTip);
 	        
 	        // We then a call a function which launches new activities specifying which activity using our intent we have just created. 
 	        startActivity(intent);

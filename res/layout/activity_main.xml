@@ -49,4 +49,24 @@
         android:onClick="sendMessage"
         android:text="Next" />
 
+    <CheckBox
+        android:id="@+id/includeTipCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totalBillS1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:onClick="onCheckboxClicked"
+        android:text="Include Tip" />
+
+    <CheckBox
+        android:id="@+id/rouletteTipCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/includeTipCheck"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:onClick="onCheckboxClicked"
+        android:text="Roulette Tip" />
+
 </RelativeLayout>
