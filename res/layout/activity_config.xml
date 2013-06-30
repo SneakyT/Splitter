@@ -4,20 +4,6 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray" >
 
-    <EditText
-        android:id="@+id/peopleAmountEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColor="@android:color/white" >
-
-        <requestFocus />
-    </EditText>
-
     <TextView
         android:id="@+id/totalValueS2"
         android:layout_width="wrap_content"
@@ -30,28 +16,6 @@
         android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/directionsTextS2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Input amount of people in your group"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/splitButtonS2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/directionsTextS2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:onClick="sendMessage2"
-        android:text="SPLIT!"
-        android:textColor="@android:color/white" 
-        android:background="@drawable/greenbutton"/>
-
-    <TextView
         android:id="@+id/infoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,5 +24,67 @@
         android:text="@string/hello_world"
         android:textColor="@android:color/white"
         tools:context=".BillSplitter" />
+
+    <EditText
+        android:id="@+id/peopleAmountEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totalValueS2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/directionsTextS2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/peopleAmountEdit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:text="Input amount of people in your group"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/splitButtonS2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/infoText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/greenbutton"
+        android:onClick="sendMessage2"
+        android:text="SPLIT!"
+        android:textColor="@android:color/white" />
+
+    <SeekBar
+        android:id="@+id/tipPercentageController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/infoText"
+        android:layout_alignRight="@+id/infoText"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tipPercentageController"
+        android:layout_centerHorizontal="true"
+        android:text="Feel free to change the tip percentage!"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tipPercentageResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Includes 0% tip of $0.00"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

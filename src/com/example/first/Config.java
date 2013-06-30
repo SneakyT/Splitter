@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class Config extends Activity {
@@ -19,6 +21,7 @@ public class Config extends Activity {
 	boolean blRouletteTip;
 	boolean blIncludeTip;
 	EditText editText;
+	NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,12 +44,31 @@ public class Config extends Activity {
         //Grab the text view reserved to display the total bill amount and populate it. 
         TextView textview = (TextView) findViewById(R.id.totalValueS2);
         
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        
         String formattedBuillValue = formatter.format(dbTotalBillValue);
         
         textview.setText("Total Value: " + formattedBuillValue); //TODO format currency correctly.
         
         editText = (EditText) findViewById(R.id.peopleAmountEdit);
+        
+        SeekBar tipPercentageBar = (SeekBar) findViewById(R.id.tipPercentageController);
+        final TextView tipValueDetails = (TextView) findViewById(R.id.tipPercentageResult);
+        
+        tipPercentageBar.setOnSeekBarChangeListener( new OnSeekBarChangeListener() {
+        	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        		// TODO Auto-generated method stub
+        		tipValueDetails.setText("Includes " + progress + "% tip of " + formatter.format((dbTotalBillValue/100) * progress));
+        	}
+        	public void onStartTrackingTouch(SeekBar seekBar)
+        	{
+        		// TODO Auto-generated method stub
+		    }
+        	public void onStopTrackingTouch(SeekBar seekBar){
+        		// TODO Auto-generated method stub
+		    }
+		});
+        
+        // End of setOnSeekBarChangeListener
         
     }
 
