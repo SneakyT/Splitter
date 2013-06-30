@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray" >
+
+    <TabWidget
+        android:id="@android:id/tabs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="52dp" >
+    </TabWidget>
+
+    <TextView
+        android:id="@+id/directionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="Input your total bill"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/totalBillS1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/directionsText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/infoText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="98dp"
+        android:onClick="sendMessage"
+        android:text="Next"
+        android:textColor="@android:color/white" 
+        android:background="@drawable/greenbutton"/>
+
+    <CheckBox
+        android:id="@+id/includeTipCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totalBillS1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:onClick="onCheckboxClicked"
+        android:text="Include Tip"
+        android:textColor="@android:color/white" />
+
+    <CheckBox
+        android:id="@+id/rouletteTipCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/includeTipCheck"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:onClick="onCheckboxClicked"
+        android:text="Roulette Tip"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/hello_world"
+        android:textColor="@android:color/white"
+        tools:context=".BillSplitter" />
+
+</RelativeLayout>
