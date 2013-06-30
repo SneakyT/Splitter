@@ -52,6 +52,7 @@ public class Config extends Activity {
         editText = (EditText) findViewById(R.id.peopleAmountEdit);
         
         SeekBar tipPercentageBar = (SeekBar) findViewById(R.id.tipPercentageController);
+        tipPercentageBar.setMax(20);
         final TextView tipValueDetails = (TextView) findViewById(R.id.tipPercentageResult);
         
         tipPercentageBar.setOnSeekBarChangeListener( new OnSeekBarChangeListener() {
