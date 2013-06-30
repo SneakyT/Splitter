@@ -2,20 +2,27 @@ Splitter
 ========
 
 
-###30/06/2013 Commit
+###v 1.1
 
-v 1.1
-  currency formatting
-  checkbox hooks added for tipping functionality
-  toast text changed
-  more standardized variable names
+#####30/06/2013 Commit
 
 
-###Initial Commit
+    - currency formatting
+    
+    - checkbox hooks added for tipping functionality
+    
+    - toast text changed
+    
+    - more standardized variable names
+    
 
-v 1.0
-  Screens up
-  split working
+###v 1.0
+
+#####Initial Commit
+
+    - Screens up
+    
+    - split working
   
   
 ###TO-DO
