@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.first"
     android:versionCode="1"
@@ -7,13 +8,15 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="16" />
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".BillSplitter"
+            android:name="com.example.first.BillSplitter"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,20 +25,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Config"
+            android:name="com.example.first.Config"
             android:label="@string/title_activity_second" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Output"
+            android:name="com.example.first.Output"
             android:label="@string/title_activity_third" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.first.ContactFragment"
+            android:label="@string/title_activity_contact_fragment" >
         </activity>
     </application>
 

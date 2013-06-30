@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Splitter</string>
@@ -6,5 +7,7 @@
     <string name="title_activity_main">Splitter</string>
     <string name="title_activity_second">Second</string>
     <string name="title_activity_third">Third</string>
+    <string name="title_activity_contact_fragment">ContactFragment</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

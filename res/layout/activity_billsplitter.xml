@@ -76,5 +76,9 @@
         android:text="@string/hello_world"
         android:textColor="@android:color/white"
         tools:context=".BillSplitter" />
+    
+    
+    
+
 
 </RelativeLayout>
