@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Second extends Activity {
+public class Config extends Activity {
 	
 	// Class variables
 	
@@ -27,7 +27,7 @@ public class Second extends Activity {
         
     	/* assign the layout "activity_second" to this activity. details for how things should be displayed initially
         will  be found in this xml found in res/layout/ */
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_config);
         
         // Grab the Intent object that was used to trigger this activity's launch.
         Intent intent = getIntent();
@@ -69,7 +69,7 @@ public class Second extends Activity {
     	intNumberOfPeople = Integer.parseInt(strNumberOfPeople);
     	System.out.println("Number of People: " + intNumberOfPeople);
     	
-    	Intent intent = new Intent(this, Third.class);
+    	Intent intent = new Intent(this, Output.class);
         intent.putExtra("pass2",split(dbTotalBillValue,intNumberOfPeople));
         
         System.out.println("Value of split function "+ split(dbTotalBillValue,intNumberOfPeople));

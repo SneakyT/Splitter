@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray" >
 
     <TabWidget
         android:id="@android:id/tabs"
@@ -18,7 +19,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:text="Input your total bill"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/totalBillS1"
@@ -28,7 +30,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="53dp"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/nextButton"
@@ -38,7 +41,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="98dp"
         android:onClick="sendMessage"
-        android:text="Next" />
+        android:text="Next"
+        android:textColor="@android:color/white" 
+        android:background="@drawable/greenbutton"/>
 
     <CheckBox
         android:id="@+id/includeTipCheck"
@@ -48,7 +53,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:onClick="onCheckboxClicked"
-        android:text="Include Tip" />
+        android:text="Include Tip"
+        android:textColor="@android:color/white" />
 
     <CheckBox
         android:id="@+id/rouletteTipCheck"
@@ -58,7 +64,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:onClick="onCheckboxClicked"
-        android:text="Roulette Tip" />
+        android:text="Roulette Tip"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/infoText"
@@ -67,6 +74,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/hello_world"
-        tools:context=".MainActivity" />
+        android:textColor="@android:color/white"
+        tools:context=".BillSplitter" />
 
 </RelativeLayout>

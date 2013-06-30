@@ -3,9 +3,11 @@ package com.example.first;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,7 +21,7 @@ import android.widget.Toast;
  * @version 1.1
  *
  */
-public class MainActivity extends Activity {
+public class BillSplitter extends Activity {
 
 	// Class variables
 	
@@ -35,10 +37,11 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         // Always call super to restore previous state of this activity if resuming. (It's an android thing)
     	super.onCreate(savedInstanceState);
-        
+    	getWindow().setFormat(PixelFormat.RGBA_8888);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
         /* assign the layout "activity_main" to this activity. details for how things should be displayed initially
            will  be found in this xml found in res/layout/ */
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_billsplitter);
  
     }
     
@@ -150,7 +153,7 @@ public class MainActivity extends Activity {
     	{   
     		/* Creates an intent in order to transition to a different activity.
     		   This class and the class "Second" are passed in as parameters */
-	    	Intent intent = new Intent(this, Second.class);
+	    	Intent intent = new Intent(this, Config.class);
 	    	
 	    	/* Extra values are included with the intent we just created, the string that we captured from our edit text earlier
 	    	   as well as the current states of the tip checkboxes*/

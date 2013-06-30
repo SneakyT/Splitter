@@ -8,14 +8,14 @@ import android.content.Intent;
 import android.view.Menu;
 import android.widget.TextView;
 
-public class Third extends Activity {
+public class Output extends Activity {
 	
 	//double splitvalue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third);
+        setContentView(R.layout.activity_output);
         
         Intent intent = getIntent();
         Double splitValue = intent.getExtras().getDouble("pass2");
