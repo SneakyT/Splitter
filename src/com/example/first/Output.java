@@ -1,19 +1,50 @@
 package com.example.first;
 
-import java.text.NumberFormat;
-
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+
+public class Output extends FragmentActivity implements ToolbarFragment.ToolbarListener {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_output);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_third, 
+               menu);
+		return true;
+	}
+	
+	public void onButtonClick(int fontsize, String text) {
+		TextFragment textFragment = 
+	       (TextFragment) 
+	         getSupportFragmentManager().findFragmentById(R.id.text_fragment);		
+		 textFragment.changeTextProperties(fontsize, text);
+	}
+}
+
+
+
+
+
+/*import java.text.NumberFormat;
+
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.widget.TextView;
 
-public class Output extends Activity {
+public class Output extends FragmentActivity {
 	
 	//double splitvalue;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+        public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_output);
         
@@ -30,9 +61,17 @@ public class Output extends Activity {
         textview.setText("The amount you each need to pay is: \n" + formattedSplitValue);
     }
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println("asdasdasd");
+        setContentView(R.layout.activity_output);
+        
+        System.out.println("Working ");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_third, menu);
         return true;
     }
-}
+}*/
