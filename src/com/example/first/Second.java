@@ -1,5 +1,7 @@
 package com.example.first;
 
+import java.text.NumberFormat;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,24 +12,41 @@ import android.widget.TextView;
 
 public class Second extends Activity {
 	
-	double totalvalue;
-	int numberOfPeople;
+	// Class variables
+	
+	double dbTotalBillValue;
+	int intNumberOfPeople;
+	boolean blRouletteTip;
+	boolean blIncludeTip;
+	EditText editText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    	// Always call super to restore previous state of this activity if resuming. (It's an android thing)
+    	super.onCreate(savedInstanceState);
+        
+    	/* assign the layout "activity_second" to this activity. details for how things should be displayed initially
+        will  be found in this xml found in res/layout/ */
         setContentView(R.layout.activity_second);
         
+        // Grab the Intent object that was used to trigger this activity's launch.
         Intent intent = getIntent();
+        
+        // Unpack values from intent and assign them to class variables.
         String strTotalValue = intent.getExtras().getString("pass");
+        dbTotalBillValue = Double.parseDouble(strTotalValue);
+        blRouletteTip = intent.getExtras().getBoolean("blRouletteTip", false);
+        blIncludeTip = intent.getExtras().getBoolean("blIncludeTip", false);
         
-        totalvalue = Double.parseDouble(strTotalValue);
-        
+        //Grab the text view reserved to display the total bill amount and populate it. 
         TextView textview = (TextView) findViewById(R.id.totalValueS2);
         
-        textview.setText("Total Value: £"+totalvalue);
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String formattedBuillValue = formatter.format(dbTotalBillValue);
         
-        EditText editText = (EditText) findViewById(R.id.totalBillS1);     
+        textview.setText("Total Value: " + formattedBuillValue); //TODO format currency correctly.
+        
+        editText = (EditText) findViewById(R.id.peopleAmountEdit);
         
     }
 
@@ -37,24 +56,34 @@ public class Second extends Activity {
         return true;
     }
     
-    
+    /**
+     * Called when the user touches the split button.
+     * @param view
+     */
     public void sendMessage2(View view)
     {
     	System.out.println("Splitting...");
-    	System.out.println(totalvalue+" Total value of the bill");
+    	System.out.println(dbTotalBillValue+" Total value of the bill");
     	
-    	EditText editText = (EditText) findViewById(R.id.peopleAmountEdit);
     	String strNumberOfPeople = editText.getText().toString();
-    	numberOfPeople = Integer.parseInt(strNumberOfPeople);
+    	intNumberOfPeople = Integer.parseInt(strNumberOfPeople);
+    	System.out.println("Number of People: " + intNumberOfPeople);
     	
-    	System.out.println(numberOfPeople+" Number of People");
-    	
-        Intent intent = new Intent(this, Third.class);
-        intent.putExtra("pass2",split(totalvalue,numberOfPeople));
-        System.out.println("asdf "+split(totalvalue,numberOfPeople));
+    	Intent intent = new Intent(this, Third.class);
+        intent.putExtra("pass2",split(dbTotalBillValue,intNumberOfPeople));
+        
+        System.out.println("Value of split function "+ split(dbTotalBillValue,intNumberOfPeople));
         startActivity(intent);
     }
     
+    /**
+     * This function encapsulates the entire purpose of the application. It divides the bill between the number of
+     * people requested.
+     * 
+     * @param bill
+     * @param people
+     * @return
+     */
     public double split(double bill, int people)
     {
 		double output = bill/people;
