@@ -1,6 +1,7 @@
 Splitter
 ========
 
+
 ###30/06/2013 Commit
 
 v 1.1
@@ -8,7 +9,7 @@ v 1.1
   checkbox hooks added for tipping functionality
   toast text changed
   more standardized variable names
-  
+
 
 ###Initial Commit
 
@@ -17,7 +18,8 @@ v 1.0
   split working
   
   
-TO-DO
+###TO-DO
+
   1. make screens pretty
     - grab, edit or produce a new theme.
     - centralize stuff (done? - needs testing on other devices)
