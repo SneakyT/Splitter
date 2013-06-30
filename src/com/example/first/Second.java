@@ -1,5 +1,7 @@
 package com.example.first;
 
+import java.text.NumberFormat;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ public class Second extends Activity {
 	int intNumberOfPeople;
 	boolean blRouletteTip;
 	boolean blIncludeTip;
+	EditText editText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,13 @@ public class Second extends Activity {
         
         //Grab the text view reserved to display the total bill amount and populate it. 
         TextView textview = (TextView) findViewById(R.id.totalValueS2);
-        textview.setText("Total Value: £" + dbTotalBillValue); //TODO format currency correctly.
+        
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String formattedBuillValue = formatter.format(dbTotalBillValue);
+        
+        textview.setText("Total Value: " + formattedBuillValue); //TODO format currency correctly.
+        
+        editText = (EditText) findViewById(R.id.peopleAmountEdit);
         
     }
 
@@ -47,24 +56,34 @@ public class Second extends Activity {
         return true;
     }
     
-    
+    /**
+     * Called when the user touches the split button.
+     * @param view
+     */
     public void sendMessage2(View view)
     {
     	System.out.println("Splitting...");
     	System.out.println(dbTotalBillValue+" Total value of the bill");
     	
-    	EditText editText = (EditText) findViewById(R.id.peopleAmountEdit);
     	String strNumberOfPeople = editText.getText().toString();
     	intNumberOfPeople = Integer.parseInt(strNumberOfPeople);
+    	System.out.println("Number of People: " + intNumberOfPeople);
     	
-    	System.out.println(intNumberOfPeople+" Number of People");
-    	
-        Intent intent = new Intent(this, Third.class);
+    	Intent intent = new Intent(this, Third.class);
         intent.putExtra("pass2",split(dbTotalBillValue,intNumberOfPeople));
+        
         System.out.println("Value of split function "+ split(dbTotalBillValue,intNumberOfPeople));
         startActivity(intent);
     }
     
+    /**
+     * This function encapsulates the entire purpose of the application. It divides the bill between the number of
+     * people requested.
+     * 
+     * @param bill
+     * @param people
+     * @return
+     */
     public double split(double bill, int people)
     {
 		double output = bill/people;

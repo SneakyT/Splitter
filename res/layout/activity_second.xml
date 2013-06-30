@@ -20,9 +20,8 @@
         android:id="@+id/totalValueS2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/peopleAmountEdit"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
         android:text="TotalValue"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -40,7 +39,7 @@
         android:id="@+id/splitButtonS2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/totalValueS2"
+		android:layout_centerHorizontal="true"
         android:layout_below="@+id/directionsTextS2"
         android:layout_marginTop="77dp"
         android:text="SPLIT!"
@@ -51,7 +50,7 @@
         android:id="@+id/infoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/peopleAmountEdit"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="@string/hello_world"
         tools:context=".MainActivity" />

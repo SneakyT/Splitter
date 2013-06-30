@@ -1,5 +1,7 @@
 package com.example.first;
 
+import java.text.NumberFormat;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,12 +19,15 @@ public class Third extends Activity {
         
         Intent intent = getIntent();
         Double splitValue = intent.getExtras().getDouble("pass2");
-        System.out.println("asdfek "+splitValue);
-        //splitvalue = Double.parseDouble(strSplitValue);
+        System.out.println("Final amount "+splitValue);
         
         TextView textview = (TextView) findViewById(R.id.totalValueS3);
         
-        textview.setText("The amount you each need to pay is: \n £"+splitValue);
+        // Format double to currency TODO Ensure locale settings work for currency.
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String formattedSplitValue = formatter.format(splitValue);
+        
+        textview.setText("The amount you each need to pay is: \n" + formattedSplitValue);
     }
 
     @Override

@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
     }
     
     /**
-     * Called when the user touches the button.
+     * Called when the user touches the next button.
      * @param view
      */
     public void sendMessage(View view) {
@@ -154,7 +154,7 @@ public class MainActivity extends Activity {
 	    	
 	    	/* Extra values are included with the intent we just created, the string that we captured from our edit text earlier
 	    	   as well as the current states of the tip checkboxes*/
-	        intent.putExtra("pass",strValueOfBill); // TODO make name of this 
+	        intent.putExtra("pass",strValueOfBill); // TODO Name this parameter better 
 	        intent.putExtra("blRouletteTip", blRouletteTip);
 	        intent.putExtra("blIncludeTip", blIncludeTip);
 	        
