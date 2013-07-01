@@ -6,21 +6,23 @@
 
     <fragment
         android:id="@+id/toolbar_fragment"
-        android:name="com.example.first.ToolbarFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:name="com.example.first.ContactsFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
         tools:layout="@layout/toolbar_fragment" />
 
+		<!-- android:layout_alignParentTop="true" -->
+		
     <fragment
         android:id="@+id/text_fragment"
         android:name="com.example.first.TextFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
         tools:layout="@layout/text_fragment" />
+    	<!-- android:layout_centerVertical="true"  -->
+    	
 </RelativeLayout>
 
 <!--  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
