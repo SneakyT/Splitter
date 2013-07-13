@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 
-public class Output extends FragmentActivity implements ToolbarFragment.ToolbarListener {
+public class Output extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,6 @@ public class Output extends FragmentActivity implements ToolbarFragment.ToolbarL
 		return true;
 	}
 	
-	public void onButtonClick(int fontsize, String text) {
-		TextFragment textFragment = 
-	       (TextFragment) 
-	         getSupportFragmentManager().findFragmentById(R.id.text_fragment);		
-		 textFragment.changeTextProperties(fontsize, text);
-	}
 }
 
 

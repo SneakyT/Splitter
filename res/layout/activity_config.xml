@@ -55,7 +55,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/greenbutton"
-        android:onClick="sendMessage2"
+        android:onClick="sendMessage"
         android:text="SPLIT!"
         android:textColor="@android:color/white" />
 
@@ -68,7 +68,7 @@
         android:layout_centerVertical="true" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/strTipMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tipPercentageController"
@@ -81,7 +81,7 @@
         android:id="@+id/tipPercentageResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/strTipMessage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:text="Includes 0% tip of $0.00"

@@ -19,7 +19,7 @@ public class TextFragment extends Fragment {
         View view = inflater.inflate(R.layout.text_fragment, 
                    container, false);
         
-        textview = (TextView) view.findViewById(R.id.textView1);
+        textview = (TextView) view.findViewById(R.id.strTipMessage);
     
         return view;
     }
