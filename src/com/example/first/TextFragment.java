@@ -29,7 +29,7 @@ public class TextFragment extends Fragment {
        double dbAmountToSplit = intent.getExtras().getDouble("dbAmountToSplit");
        double intNumberOfPeople = intent.getExtras().getInt("intNumberOfPeople");
        double dbTipValue = intent.getExtras().getDouble("dbTipValue");
-
+       // TODO: intent also contains unhandled blRouletteTip data.
        
         textview = (TextView) view.findViewById(R.id.strTipMessage);
         textview.setText("Each pay: "+ dbEachPay +"\nAmount to split: "+ dbAmountToSplit +

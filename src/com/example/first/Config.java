@@ -106,10 +106,20 @@ public class Config extends Activity {
     	System.out.println("Number of People: " + intNumberOfPeople);
     	
     	Intent intent = new Intent(this, Output.class);
-    	double dbAmountToSplit = dbTotalBillValue + dbTipValue;
-        intent.putExtra("dbEachPay",split(dbAmountToSplit, intNumberOfPeople));
+    	
+    	// check to see if Include mode or roulette mode is 
+    	double dbAmountToSplit = 0;
+    	if (blIncludeTip) {
+    		dbAmountToSplit = dbTotalBillValue + dbTipValue;
+    	}
+    	else { // must be roulette mode or no tip.
+    		dbAmountToSplit = dbTotalBillValue;
+    	}
+    	
+    	intent.putExtra("dbEachPay",split(dbAmountToSplit, intNumberOfPeople));
         intent.putExtra("dbAmountToSplit",dbAmountToSplit);
         intent.putExtra("intNumberOfPeople",intNumberOfPeople);
+        intent.putExtra("blRouletteTip", blRouletteTip);
         intent.putExtra("dbTipValue",dbTipValue);
         
         
