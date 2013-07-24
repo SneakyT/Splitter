@@ -20,6 +20,7 @@ public class Config extends Activity {
 	int intNumberOfPeople;
 	boolean blRouletteTip;
 	boolean blIncludeTip;
+	double dbTipValue = 0;
 	EditText editText;
 	NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
@@ -52,24 +53,36 @@ public class Config extends Activity {
         editText = (EditText) findViewById(R.id.peopleAmountEdit);
         
         SeekBar tipPercentageBar = (SeekBar) findViewById(R.id.tipPercentageController);
-        tipPercentageBar.setMax(20);
         final TextView tipValueDetails = (TextView) findViewById(R.id.tipPercentageResult);
         
-        tipPercentageBar.setOnSeekBarChangeListener( new OnSeekBarChangeListener() {
-        	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        		// TODO Auto-generated method stub
-        		tipValueDetails.setText("Includes " + progress + "% tip of " + formatter.format((dbTotalBillValue/100) * progress));
-        	}
-        	public void onStartTrackingTouch(SeekBar seekBar)
-        	{
-        		// TODO Auto-generated method stub
-		    }
-        	public void onStopTrackingTouch(SeekBar seekBar){
-        		// TODO Auto-generated method stub
-		    }
-		});
-        
-        // End of setOnSeekBarChangeListener
+        if(blIncludeTip || blRouletteTip) { // user requested to add a tip so how tip scrollbar
+	        tipPercentageBar.setMax(20);
+	       
+	        
+	        tipPercentageBar.setOnSeekBarChangeListener( new OnSeekBarChangeListener() {
+	        	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+	        		// TODO Auto-generated method stub
+	        		dbTipValue = (dbTotalBillValue/100) * progress;
+	        		tipValueDetails.setText("Includes " + progress + "% tip of " + formatter.format(dbTipValue));
+	        	}
+	        	public void onStartTrackingTouch(SeekBar seekBar)
+	        	{
+	        		// TODO Auto-generated method stub
+			    }
+	        	public void onStopTrackingTouch(SeekBar seekBar){
+	        		// TODO Auto-generated method stub
+			    }
+			});
+	        
+	        // End of setOnSeekBarChangeListener
+        }
+        else // hide tip scroll bar from user
+        {
+        	tipPercentageBar.setVisibility(View.INVISIBLE);
+        	tipValueDetails.setVisibility(View.INVISIBLE);
+        	final TextView tipMessage = (TextView) findViewById(R.id.strTipMessage);
+        	tipMessage.setVisibility(View.INVISIBLE);
+        }
         
     }
 
@@ -83,7 +96,7 @@ public class Config extends Activity {
      * Called when the user touches the split button.
      * @param view
      */
-    public void sendMessage2(View view)
+    public void sendMessage(View view)
     {
     	System.out.println("Splitting...");
     	System.out.println(dbTotalBillValue+" Total value of the bill");
@@ -93,7 +106,22 @@ public class Config extends Activity {
     	System.out.println("Number of People: " + intNumberOfPeople);
     	
     	Intent intent = new Intent(this, Output.class);
-        intent.putExtra("pass2",split(dbTotalBillValue,intNumberOfPeople));
+    	
+    	// check to see if Include mode or roulette mode is 
+    	double dbAmountToSplit = 0;
+    	if (blIncludeTip) {
+    		dbAmountToSplit = dbTotalBillValue + dbTipValue;
+    	}
+    	else { // must be roulette mode or no tip.
+    		dbAmountToSplit = dbTotalBillValue;
+    	}
+    	
+    	intent.putExtra("dbEachPay",split(dbAmountToSplit, intNumberOfPeople));
+        intent.putExtra("dbAmountToSplit",dbAmountToSplit);
+        intent.putExtra("intNumberOfPeople",intNumberOfPeople);
+        intent.putExtra("blRouletteTip", blRouletteTip);
+        intent.putExtra("dbTipValue",dbTipValue);
+        
         
         System.out.println("Value of split function "+ split(dbTotalBillValue,intNumberOfPeople));
         startActivity(intent);
